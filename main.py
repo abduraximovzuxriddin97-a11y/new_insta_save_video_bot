@@ -8,6 +8,23 @@ from utils import download_instagram_video
 from config import main_commands, db, bot
 
 
+from flask import Flask
+import threading
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "Bot is running"
+
+def run_web():
+    app.run(host="0.0.0.0", port=10000)
+
+threading.Thread(target=run_web).start()
+
+# pastda sening telegram bot koding ishlayveradi
+
+
 @db.message(Command('start'))
 async def start_cmd(message: Message):
     await message.reply("Salom, Ushbu botga instagramdan havola yuborib, uning videosini ajratib oling")
