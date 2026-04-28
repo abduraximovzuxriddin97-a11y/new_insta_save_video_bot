@@ -31,6 +31,9 @@ async def start_cmd(message: Message):
 
 @db.message(F.text.startswith("https://www.instagram.com/"))
 async def download_video(message: Message):
+    if not message.text.startswith("https://www.instagram.com/"):
+        return await message.answer("Kechirasiz, ushbu havola instagram havolasi ekaniga ishonch hosil qiling")
+
     load_msg = await message.answer("⏳")
 
     try:
