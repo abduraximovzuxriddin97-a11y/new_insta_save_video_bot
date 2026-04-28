@@ -43,6 +43,7 @@ async def download_video(message: Message):
 
         video.unlink()
     except:
+        await load_msg.delete()
         await message.answer("Video yuklashda xatolik buldi, qayta urining")
 
 
